@@ -10,7 +10,7 @@ This is a complete, runnable application: React frontend, Express API, SQLite da
 
 ## Quick start
 
-Requirements: **Node.js 22.5 or newer** (uses the built-in `node:sqlite` module, so there is no native database driver to compile).
+Requirements: **Node.js 22.13 or newer** (uses the built-in `node:sqlite` module, so there is no native database driver to compile; older 22.x versions only enable it behind a flag).
 
 ```bash
 npm install
