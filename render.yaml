@@ -1,0 +1,23 @@
+# One-click demo deploy on Render (https://render.com) via "New > Blueprint".
+# Free plan note: the filesystem is not persistent, so the SQLite database is re-created
+# and re-seeded from the sample world whenever the service restarts or redeploys.
+# That is fine for a demo; attach a disk (paid plans) for real persistence.
+services:
+  - type: web
+    name: aftrhrs
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_PATH
+        value: ./data/aftrhrs.db
+      - key: MUSIC_METADATA
+        value: itunes
+      - key: AI_PROVIDER
+        value: ""
